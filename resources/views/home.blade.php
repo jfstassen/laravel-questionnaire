@@ -15,7 +15,7 @@
                     @endif
 
                     {{-- {{ __('You are logged in!') }} --}}
-                    <a href="/questionnaires" class="btn btn-dark">Create New Questionnaire</a>
+                    <a href="/questionnaires/create" class="btn btn-dark">Create New Questionnaire</a>
                 </div>
             </div>
         </div>
