@@ -13,4 +13,15 @@ class Questionnaire extends Model
     {
         return $this->belongsTo(User::class);
     }
+    // a questionnaire has many question
+    public function questions()
+    {
+
+        return $this->hasMany(Question::class);
+    }
+    // a questionnaire has many surveys
+    public function surveys()
+    {
+        return $this->hasMany(Survey::class);
+    }
 }

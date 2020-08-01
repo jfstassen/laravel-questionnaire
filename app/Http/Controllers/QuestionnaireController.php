@@ -36,6 +36,10 @@ class QuestionnaireController extends Controller
     }
     public function show(\App\Questionnaire $questionnaire)
     {
+        //lazyloading relationships
+        //load the public function question() in questionnaire.php + la function answers()
+        $questionnaire->load("questions.answers");
+        // dd($questionnaire); 
         return view("questionnaire.show", compact("questionnaire"));
     }
 }
