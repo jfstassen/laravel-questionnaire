@@ -8,7 +8,8 @@
         <div class="card-header">{{$questionnaire->title}}</div>
         <div class="card-body">
           <a class="btn btn-dark" href="/questionnaires/{{$questionnaire->id}}/questions/create">Add new question</a>
-        <a class="btn btn-dark" href="/surveys/{{$questionnaire->id}}-{{Str::slug($questionnaire->title)}}">Take Survey</a>
+          <a class="btn btn-dark" href="/surveys/{{$questionnaire->id}}-{{Str::slug($questionnaire->title)}}">Take
+            Survey</a>
         </div>
       </div>
 
@@ -21,6 +22,14 @@
             <li class="list-group-item">{{$answer->answer}}</li>
             @endforeach
           </ul>
+        </div>
+        <div class="card-footer">
+        <form action="/questionnaires/{{$questionnaire->id}}/questions/{{$question->id}}" method="post">
+            @method("DELETE")
+            @csrf
+            {{-- <input type="hidden" name="question_id" value="{{$question->id}}"> --}}
+            <button type="submit" class="btn btn-sm btn-outline-danger">Delete Question</button>
+          </form>
         </div>
       </div>
       @endforeach

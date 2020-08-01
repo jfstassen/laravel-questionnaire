@@ -9,13 +9,33 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
 
                     {{-- {{ __('You are logged in!') }} --}}
                     <a href="/questionnaires/create" class="btn btn-dark">Create New Questionnaire</a>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-header">My questionnaires</div>
+
+                <div class="card-body">
+                    <ul class="list-group">
+                        @foreach ($questionnaires as $questionnaire)
+                        <li class="list-group-item">
+                            <a href="{{$questionnaire->path()}}">{{$questionnaire->title}}</a>
+                            <div class="mt-2">
+                                <small class="font-weight-bold">Share Url</small>
+                                <p>
+                                    <a href="{{$questionnaire->publicPath()}}">{{$questionnaire->publicPath()}}</a>
+                                </p>
+                            </div>
+                        </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
